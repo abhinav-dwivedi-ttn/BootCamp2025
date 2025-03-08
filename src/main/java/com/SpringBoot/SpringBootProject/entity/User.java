@@ -1,10 +1,13 @@
 package com.SpringBoot.SpringBootProject.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 //  Question - 1
 @Entity
 @Table(name="User_Details")
+@JsonFilter("CustomFilter")
 public class User {
 
     @Id
@@ -12,6 +15,9 @@ public class User {
     private long id;
     private String name;
     private int age;
+
+    //@JsonIgnore
+    private String password;
 
     public int getAge() {
         return age;
@@ -30,5 +36,12 @@ public class User {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String name) {
+        this.password = password;
     }
 }
